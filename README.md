@@ -6,7 +6,7 @@ source venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
 
-# Run LLM Genereation WITHOUT Cache Limit
+# Run LLM Generation WITHOUT Cache Limit
 
 This is the default behavior of MLX. Notice the high cache memory usage. MLX Cache is set to 0 by default, which unfortunately results in MLX gobbling up all available memory on my machine. Documentation reference: https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.metal.set_cache_limit.html
 
