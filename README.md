@@ -6,9 +6,9 @@ source venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
 
-# Run LLM Genereation without Cache Limit
+# Run LLM Genereation WITHOUT Cache Limit
 
-This is the default behavior of mlx_lm. Notice the high cache memory usage. MLX Cache is set to 0 by default, which means unlimited so MLX will use as much memory as it can get.
+This is the default behavior of MLX. Notice the high cache memory usage. MLX Cache is set to 0 by default, which unfortunately results in MLX gobbling up all available memory on my machine. Documentation reference: https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.metal.set_cache_limit.html
 
 ```
 python3  memory_check.py --input 3blue1brown_attention.txt --output response.txt --model /Users/kerekovskik/hf/Meta-Llama-3-8B-Instruct-MLX --cache-limit 0
@@ -24,9 +24,11 @@ Input Tokens: 7522
 Peak MLX Memory: 29326.617294311523 MB
 ```
 
-# Run LLM Generation Without Cache Limit 
+During the course of generating a response, it reserved ~53GB of memory in the MLX cache.
 
-Memory usage is successfully controlled by setting a cache limit for MLX. The program does end with a non-0 return code because of some issue that occurs after token generation is complete.
+# Run LLM Generation WITH Cache Limit 
+
+Memory usage is successfully controlled by setting a cache limit for MLX.  One slight issue is that when I set the cache limit programmatically, the program does end with a non-0 return code because of some issue that occurs after token generation is complete presumably during some cleanup code as the program exits.
 
 ```
 python3  memory_check.py --input 3blue1brown_attention.txt --output response.txt --model /Users/kerekovskik/hf/Meta-Llama-3-8B-Instruct-MLX --cache-limit 1
