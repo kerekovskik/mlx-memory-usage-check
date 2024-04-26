@@ -28,7 +28,7 @@ During the course of generating a response, it reserved ~53GB of memory in the M
 
 # Run LLM Generation WITH Cache Limit 
 
-Memory usage is successfully controlled by setting a cache limit for MLX.  One slight issue is that when I set the cache limit programmatically, the program does end with a non-0 return code because of some issue that occurs after token generation is complete presumably during some cleanup code as the program exits.
+Memory usage is successfully controlled by setting a cache limit for MLX.  
 
 ```
 python3  memory_check.py --input 3blue1brown_attention.txt --output response.txt --model /Users/kerekovskik/hf/Meta-Llama-3-8B-Instruct-MLX --cache-limit 1
@@ -42,6 +42,4 @@ MLX Cache Memory Post-Generation: 1024.51 MB
 MLX Total Memory Post-Generation: 17383.49 MB
 Input Tokens: 7522
 Peak MLX Memory: 29326.617294311523 MB
-libc++abi: terminating due to uncaught exception of type std::__1::system_error: mutex lock failed: Invalid argument
-zsh: abort      python3 memory_check.py --input 3blue1brown_attention.txt --output  --model  
 ```
