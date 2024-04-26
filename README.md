@@ -8,8 +8,7 @@ python3 -m pip install -r requirements.txt
 
 # Run LLM Generation WITHOUT Cache Limit
 
-This is the default behavior of MLX. Notice the high cache memory usage. MLX Cache is set to 0 by default, which unfortunately results in MLX gobbling up all available memory on my machine. Documentation reference: https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.metal.set_cache_limit.html
-
+This is the default behavior of MLX. Notice the high cache memory usage. 
 ```
 python3  memory_check.py --input 3blue1brown_attention.txt --output response.txt --model /Users/kerekovskik/hf/Meta-Llama-3-8B-Instruct-MLX --cache-limit 0
 None of PyTorch, TensorFlow >= 2.0, or Flax have been found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
